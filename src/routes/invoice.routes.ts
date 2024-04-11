@@ -1,8 +1,9 @@
-import express from "express";
-import { getInvoices } from "../controllers/invoice.controller";
+import express from 'express';
+import { getInvoices } from '../controllers/invoice.controller';
+import { authenticateToken } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
-router.get("/all", getInvoices);
+router.get('/all', authenticateToken, getInvoices);
 
 export default router;
